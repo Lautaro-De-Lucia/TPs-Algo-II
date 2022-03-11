@@ -1,0 +1,6 @@
+Argumentos:
+	-i: tipo de input seguido de nombre del archivo o '-' para cin
+	-o: tipo de output seguido de nombre del archivo o '-' para cout
+	-m dft: procesa el input con la transformada discreta de Fourier
+	-m idft: procesa el input con la transformada inversa de Fourier
+Los valores complejos ingresados se procesan en formato de par ordenado (re,im)

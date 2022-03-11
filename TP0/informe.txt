@@ -1,0 +1,11 @@
+								INFORME
+
+INTRODUCCIÓN:
+	El objetivo de este trabajo práctico es el desarrollo de un programa capaz de procesar, para una serie de valores, la Transformada Discreta de Fourier (DFT) o su inversa (IDFT). Estos valores pueden ser ingresados manualmente por el usuario o leídos de un archivo de texto. Del mismo modo, una vez realizado el procesamiento, estos pueden imprimirse por pantalla o exportarse a otro archivo de texto.
+	Para la codificación de el programa se utilizó el lenguaje de programación C++. Los distintos parámetros de funcionamiento en la ejecución se reciben como argumentos en linea de ordenes. Para el procesamiento se utilizó una plantilla de clase "Array" en conjunto con la clase "complejo" facilitada por el curso. La compilación se llevó a cabo mediante un makefile, utilizando el compilador g++.
+
+DESARROLLO:
+	Para la validación de los argumentos, se definió una estructura con toda la información pertinente a la configuración. Esta se pasa junto con los argumentos a una función de validación que, en caso de ingresarse los argumentos correctamente, guarda la configuración en la estructura. 
+	Los valores complejos recibidos son cargados en una instancia de la plantilla de clase "Array" mediante un método de carga. Éste esta definido a modo de reservar memoria continuamente hasta finalizar la carga, conforme a una estrategia de crecimiento exponencial. La validación de etos valores se implementa de forma diferente en función del formato de entrada. En caso de ingresarse por stdin, un valor erroneo se ignora (notificando al usuario) y el procesamiento continua. En cambio, en caso de leerse de un archivo, un valor erroneo implica abortar el procesamiento, ya que se juzga que este compromete todo el cálculo de la DFT/IDFT.
+	El cálculo de la DFT e IDFT se realizó por medio de dos métodos "friend" de la clase "complejo" (para cada operación respectivamente). Estos reciben la instancia de la plantilla de clase "Array" con los valores cargados y devuelven otra instancia con los valores procesados. Estos pueden, según la configuración, ser exportados a la pantalla o a un archivo de texto. Para este caso, no se definió un metodo de impresión sino que se utilizó una sobrecarga de los operadores de flujo de salida.
+

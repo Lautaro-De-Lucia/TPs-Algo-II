@@ -1,0 +1,82 @@
+
+ATRIBUTOS
+
+
+
+	size_t allocSize_;
+
+	Cantidad de elementos del arreglo que podemos escribir/modificar sin comprometer memoria contigua.
+
+	size_t size_;
+
+	Cantidad de elementos del arreglo que hemos escrito.
+
+	T * arr_;
+
+	Puntero a tipo "T" al que se asigna la memoria.
+
+
+
+MÉTODOS	
+
+
+
+	Array (size_t = 10);
+
+	Constructor. Recibe el tamaño (size_) del arreglo a construir. 
+
+	Array (const Array &); 
+
+	Constructor por copia.
+
+	~Array ();
+
+	Destructor.
+
+	size_t getAllocSize () const;
+
+	"getter" del atributo "allocSize".
+
+	size_t getSize () const;
+
+	"getter" del atributo "size".
+
+	status_t resize ();
+
+	Incrementa el tamaño (allocSize) de nuestro arreglo. Estrategia de crecimiento exponencial parametrizada por la constante simbólica "GROWTH_FACTOR".
+
+	status_t loadArray ();
+
+	Carga valores recibidos por "stdin" en el arreglo. En caso de ser necesario, se incrementa el tamaño del arreglo.
+
+	status_t loadArray (ifstream &);
+
+	Carga valores leídos de un archivo de texto que recibe como argumento. Los valores deben estar delimitados por el caracter newline. En caso de ser necesario, se incrementa el tamaño del arreglo. 
+	
+OPERADORES SOBRECARGADOS
+
+	const Array & operator = (const Array &);
+
+	Copia los valores del arreglo de la derecha en el de la izquierda.  
+
+	bool operator == (const Array &) const;
+
+	Compara los arreglos valor por valor.
+
+	bool operator != (const Array &) const {return ! (*this == rArray);}
+
+	Compara los arreglos valor por valor.
+
+	T & operator[ ] (size_t);
+
+	Asigna un elemento en la posición indicada.
+
+	friend ostream & operator << (ostream &, const Array<U> &);
+
+	Envía los elementos del arreglo a la ostream indicada.
+
+	friend istream & operator >> (istream &, Array<U> &);
+
+	Carga "alloc_size" valores en el arreglo (memoria previamente asignada) desde la istream indicada.
+	Valida el input en los tipos básicos. Para tipos definidos por el usuario, se asume que la validación
+	está implementada en el operador de flujo de la clase. 
